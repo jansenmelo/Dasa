@@ -36,7 +36,8 @@ E selecionar o laboratório ${LABORATORY}
 
 Então o usuário deve ser encaminhado para a nova página
     Switch Window                       NEW
-    Wait until page contains            ${PAGE_TITLE_DELBONI}   
+    Unselect Frame                      
+    Wait until Element is Visible       ${Delboni_Home} 
     Click Element                       ${Delboni_Home} 
     Title Should be                     ${PAGE_TITLE_DELBONI}
 
