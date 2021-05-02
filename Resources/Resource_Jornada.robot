@@ -11,7 +11,7 @@ ${Nossas_Marcas_Link}           //a[contains(text(),'Nossas Marcas')]
 ${Nossas_Marcas_Page}           //h2[contains(.,'Nossas Marcas')]
 ${Opções_Regiões}               //select[@name='locations'] 
 ${Região_Selecionada}           //h3[contains(.,'${REGIONS}')]
-${Delboni_Home}                 //img[@title='Home']
+${Delboni_Home}                 //img[contains(@alt,'Home')]
 
             
     
@@ -36,7 +36,7 @@ E selecionar o laboratório ${LABORATORY}
 
 Então o usuário deve ser encaminhado para a nova página
     Switch Window                       NEW
-    Wait until page contains            ${PAGE_TITLE_DELBONI}         
+    Wait until page contains            ${PAGE_TITLE_DELBONI}   
     Click Element                       ${Delboni_Home} 
     Title Should be                     ${PAGE_TITLE_DELBONI}
 
