@@ -56,15 +56,11 @@ Pesquisar pela região ${REGIONS}
     Select From List By Value           ${Opções_Regiões}        ${REGIONS}
     Repeat Keyword                      3 times                  Acessar próximo campo
     Wait until Element is Visible       ${Região_Selecionada} 
-    Remove File                         ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json          
-    Append to File                      ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json                 { 
-    FOR    ${Laboratories}    IN    @{Laboptions} 
-            ${labs}                Get Element Attribute                //a[contains(@href, '${Laboratories}')]         href
-            Log to Console              ${Labs}
-            Append to File              ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json                "Laboratorio": "${Laboratories}", "link": "${Labs}",\n
-            Run Keyword If             '${Laboratories}' == 'hemat'    Log to Console    Esses são os laboratórios!!! 
-    END 
+    Remove File                         ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json         
+    Append to File                      ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json                 {   
+    Pecorrer laboratorios
     Append to File                      ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json                 "Labs": "Final"}
+
 
 Selecionar laboratório ${LABORATORY}
     Click Element                       ${LABORATORY}     
@@ -72,3 +68,14 @@ Selecionar laboratório ${LABORATORY}
 
 Acessar próximo campo
     Press Keys                              None        TAB
+
+Pecorrer laboratorios
+    ${COUNT} =    Set Variable    ${0}
+     FOR    ${Laboratories}    IN    @{Laboptions}
+            ${labs}                Get Element Attribute                //a[contains(@href, '${Laboratories}')]         href
+            Log to Console                ${Labs}
+            ${COUNT} =    Set Variable    ${COUNT + 1}
+            Append to File                ${EXECDIR}/Resources/Fixtures/Laboratorios/Labs.json                "Laboratorio ${COUNT}": "${Laboratories}", "link": "${Labs}",\n
+            Run Keyword If               '${Laboratories}' == 'hemat'    Log to Console    Esses são os laboratórios!!! 
+     END 
+
