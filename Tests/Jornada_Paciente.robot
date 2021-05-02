@@ -11,7 +11,7 @@ Documentation
 Cenario 01 - Jornada Paciente
     [Documentation]     O Teste abaixo verifica se o usuário consegue fazer login com uma conta já criada. 
     ...                 Os dados utilizados no teste (EMAIL & Senha_Email) estão no arquivo JSON chamado dados.json.                    
-    [Tags]  Login com sucesso 
+    [Tags]  Acesso laboratorios
 
     Dado que o usuário acesse a página Nossas Marcas
     Quando pesquisar pela região de ${REGIONS}
